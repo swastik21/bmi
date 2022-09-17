@@ -34,7 +34,10 @@ class _HomePageState extends ConsumerState<HomePage> {
         appBar: AppBar(
           title: Text(
             "BMI Calculator",
-            style: TextStyle(color: Theme.of(context).colorScheme.secondary),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.secondary,
+              fontSize: 25,
+            ),
           ),
           centerTitle: true,
           elevation: 0,
@@ -45,10 +48,10 @@ class _HomePageState extends ConsumerState<HomePage> {
           child: Column(
             children: [
               const SizedBox(
-                height: 20,
+                height: 60,
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -64,7 +67,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ),
               ),
               const SizedBox(
-                height: 50,
+                height: 80,
               ),
               Consumer(
                 builder: (context, ref, child) {
@@ -102,7 +105,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                           "Calculate",
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.secondary,
-                            fontSize: 25,
+                            fontSize: 40,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -112,7 +115,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 },
               ),
               const SizedBox(
-                height: 20,
+                height: 50,
               ),
               Consumer(
                 builder: (context, ref, child) {
@@ -121,7 +124,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                     _bmi.toStringAsFixed(1),
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.secondary,
-                      fontSize: 42,
+                      fontSize: 55,
                     ),
                   );
                 },
@@ -139,7 +142,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                       _status,
                       style: TextStyle(
                         color: _statusColor,
-                        fontSize: 22,
+                        fontSize: 35,
                       ),
                     ),
                   );

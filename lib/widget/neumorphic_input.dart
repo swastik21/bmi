@@ -25,7 +25,7 @@ class NeumorphicInput extends StatelessWidget {
         ],
         borderRadius: BorderRadius.circular(25),
       ),
-      width: 130,
+      width: 180,
       child: TextField(
         cursorHeight: 40,
         cursorColor: Colors.grey,
@@ -36,8 +36,8 @@ class NeumorphicInput extends StatelessWidget {
         controller: controller,
         style: TextStyle(
             color: Theme.of(context).colorScheme.secondary,
-            fontSize: 35,
-            fontWeight: FontWeight.w300),
+            fontSize: 55,
+            fontWeight: FontWeight.w400),
         decoration: InputDecoration(
           border: InputBorder.none,
           hintStyle: TextStyle(

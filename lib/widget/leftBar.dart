@@ -10,7 +10,7 @@ class LeftBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
-          height: 25,
+          height: 30,
           width: leftBarWidth.toDouble(),
           decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.secondary,

@@ -10,7 +10,7 @@ class RightBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Container(
-          height: 25,
+          height: 30,
           width: rightBarWidth.toDouble(),
           decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.secondary,

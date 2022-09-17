@@ -10,7 +10,7 @@ class Illustration extends StatelessWidget {
     return Column(
       children: const [
         SizedBox(
-          height: 10,
+          height: 30,
         ),
         RightBar(rightBarWidth: 20),
         SizedBox(
