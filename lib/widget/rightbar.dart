@@ -6,11 +6,12 @@ class RightBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Container(
-          height: 30,
+          height: _screenSize.height * 0.035,
           width: rightBarWidth.toDouble(),
           decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.secondary,

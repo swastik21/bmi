@@ -6,11 +6,12 @@ class LeftBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
-          height: 30,
+          height: _screenSize.height * 0.035,
           width: leftBarWidth.toDouble(),
           decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.secondary,

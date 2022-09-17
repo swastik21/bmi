@@ -8,6 +8,7 @@ class NeumorphicInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary,
@@ -25,9 +26,9 @@ class NeumorphicInput extends StatelessWidget {
         ],
         borderRadius: BorderRadius.circular(25),
       ),
-      width: 180,
+      width: _screenSize.width * 0.4,
       child: TextField(
-        cursorHeight: 40,
+        cursorHeight: 30,
         cursorColor: Colors.grey,
         showCursor: true,
         keyboardType: TextInputType.number,
@@ -36,7 +37,7 @@ class NeumorphicInput extends StatelessWidget {
         controller: controller,
         style: TextStyle(
             color: Theme.of(context).colorScheme.secondary,
-            fontSize: 55,
+            fontSize: (_screenSize.width + _screenSize.height) * 0.025,
             fontWeight: FontWeight.w400),
         decoration: InputDecoration(
           border: InputBorder.none,

@@ -1,9 +1,7 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 import 'package:bmi/providers.dart';
 import 'package:bmi/widget/illustration.dart';
-import 'package:bmi/widget/leftBar.dart';
 import 'package:bmi/widget/neumorphic_input.dart';
-import 'package:bmi/widget/rightbar.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -28,6 +26,8 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final _screenSize = MediaQuery.of(context).size;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -36,7 +36,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             "BMI Calculator",
             style: TextStyle(
               color: Theme.of(context).colorScheme.secondary,
-              fontSize: 25,
+              fontSize: (_screenSize.width + _screenSize.height) * 0.025,
             ),
           ),
           centerTitle: true,
@@ -47,11 +47,12 @@ class _HomePageState extends ConsumerState<HomePage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(
-                height: 60,
+              SizedBox(
+                height: _screenSize.height * 0.01,
               ),
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(
+                    (_screenSize.height + _screenSize.width) * 0.02),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -66,8 +67,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 80,
+              SizedBox(
+                height: _screenSize.height * 0.03,
               ),
               Consumer(
                 builder: (context, ref, child) {
@@ -100,12 +101,14 @@ class _HomePageState extends ConsumerState<HomePage> {
                             heightController.text, weightContoller.text);
                       },
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(
+                            (_screenSize.height + _screenSize.width) * 0.01),
                         child: Text(
                           "Calculate",
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.secondary,
-                            fontSize: 40,
+                            fontSize: (_screenSize.width + _screenSize.height) *
+                                0.026,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -114,8 +117,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                   );
                 },
               ),
-              const SizedBox(
-                height: 50,
+              SizedBox(
+                height: _screenSize.height * 0.05,
               ),
               Consumer(
                 builder: (context, ref, child) {
@@ -124,13 +127,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                     _bmi.toStringAsFixed(1),
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.secondary,
-                      fontSize: 55,
+                      fontSize: (_screenSize.width + _screenSize.height) * 0.05,
                     ),
                   );
                 },
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: _screenSize.height * 0.05,
               ),
               Consumer(
                 builder: (context, ref, child) {
@@ -142,7 +145,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                       _status,
                       style: TextStyle(
                         color: _statusColor,
-                        fontSize: 35,
+                        fontSize:
+                            (_screenSize.width + _screenSize.height) * 0.025,
                       ),
                     ),
                   );
