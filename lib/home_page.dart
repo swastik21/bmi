@@ -1,5 +1,6 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 import 'package:bmi/providers.dart';
+import 'package:bmi/widget/illustration.dart';
 import 'package:bmi/widget/leftBar.dart';
 import 'package:bmi/widget/neumorphic_input.dart';
 import 'package:bmi/widget/rightbar.dart';
@@ -144,26 +145,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                   );
                 },
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              const RightBar(rightBarWidth: 20),
-              const SizedBox(
-                height: 10,
-              ),
-              const RightBar(rightBarWidth: 50),
-              const SizedBox(
-                height: 10,
-              ),
-              const RightBar(rightBarWidth: 20),
-              const SizedBox(
-                height: 30,
-              ),
-              const LeftBar(leftBarWidth: 30),
-              const SizedBox(
-                height: 50,
-              ),
-              const LeftBar(leftBarWidth: 30)
+              const Illustration()
             ],
           ),
         ),
