@@ -15,14 +15,12 @@ class NeumorphicInput extends StatelessWidget {
           BoxShadow(
             color: Colors.grey.shade800,
             blurRadius: 6,
-            spreadRadius: 1,
             offset: const Offset(-2, -2),
           ),
           const BoxShadow(
             color: Colors.black,
             offset: Offset(2, 2),
             blurRadius: 6,
-            spreadRadius: 1,
           )
         ],
         borderRadius: BorderRadius.circular(25),

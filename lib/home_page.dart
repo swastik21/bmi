@@ -3,7 +3,8 @@ import 'package:bmi/providers.dart';
 import 'package:bmi/widget/leftBar.dart';
 import 'package:bmi/widget/neumorphic_input.dart';
 import 'package:bmi/widget/rightbar.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
+import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -64,43 +65,50 @@ class _HomePageState extends ConsumerState<HomePage> {
               const SizedBox(
                 height: 50,
               ),
-              Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade800,
-                      blurRadius: 6,
-                      spreadRadius: 1,
-                      offset: const Offset(-2, -2),
+              Consumer(
+                builder: (context, ref, child) {
+                  final _isPressed = ref.watch(bmiProvider).isPressed;
+                  return AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade800,
+                          blurRadius: 6,
+                          offset: const Offset(-2, -2),
+                          inset: _isPressed,
+                        ),
+                        BoxShadow(
+                          color: Colors.black,
+                          blurRadius: 6,
+                          offset: const Offset(2, 2),
+                          inset: _isPressed,
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(25),
                     ),
-                    const BoxShadow(
-                      color: Colors.black,
-                      offset: Offset(2, 2),
-                      blurRadius: 6,
-                      spreadRadius: 1,
-                    ),
-                  ],
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: GestureDetector(
-                  onTap: () {
-                    ref
-                        .read(bmiProvider)
-                        .calculate(heightController.text, weightContoller.text);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Calculate",
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w400,
+                    child: Listener(
+                      onPointerUp: (_) => ref.read(bmiProvider).press(),
+                      onPointerDown: (_) {
+                        ref.read(bmiProvider).press();
+                        ref.read(bmiProvider).calculate(
+                            heightController.text, weightContoller.text);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Calculate",
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.secondary,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
               const SizedBox(
                 height: 20,
@@ -123,12 +131,13 @@ class _HomePageState extends ConsumerState<HomePage> {
               Consumer(
                 builder: (context, ref, child) {
                   final _status = ref.watch(bmiProvider).status;
+                  final _statusColor = ref.watch(bmiProvider).statuscolor;
                   return Visibility(
                     visible: _status.isNotEmpty,
                     child: Text(
                       _status,
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: _statusColor,
                         fontSize: 22,
                       ),
                     ),
