@@ -1,5 +1,5 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
-import 'package:bmi/providers.dart';
+import 'package:bmi/services/bmi_service.dart';
 import 'package:bmi/widget/illustration.dart';
 import 'package:bmi/widget/neumorphic_input.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
@@ -16,6 +16,9 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage> {
   final TextEditingController heightController = TextEditingController();
   final TextEditingController weightContoller = TextEditingController();
+  final bmiProvider = ChangeNotifierProvider<Bmi>((ref) {
+    return Bmi();
+  });
 
   @override
   void dispose() {
