@@ -62,10 +62,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                     NeumorphicInput(
                       controller: heightController,
                       hintText: "Height",
+                      unit: "ft",
                     ),
                     NeumorphicInput(
                       controller: weightContoller,
                       hintText: "Weight",
+                      unit: "kg",
                     ),
                   ],
                 ),
@@ -77,7 +79,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 builder: (context, ref, child) {
                   final _isPressed = ref.watch(bmiProvider).isPressed;
                   return AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
+                    duration: const Duration(milliseconds: 70),
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.primary,
                       boxShadow: [
@@ -126,11 +128,23 @@ class _HomePageState extends ConsumerState<HomePage> {
               Consumer(
                 builder: (context, ref, child) {
                   final _bmi = ref.watch(bmiProvider).bmi;
-                  return Text(
-                    _bmi.toStringAsFixed(1),
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary,
-                      fontSize: (_screenSize.width + _screenSize.height) * 0.05,
+                  return Text.rich(
+                    TextSpan(
+                      text: _bmi.toStringAsFixed(1),
+                      children: [
+                        TextSpan(
+                          text: 'kg/m\u00B2',
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.secondary,
+                              fontSize:
+                                  (_screenSize.width + _screenSize.height) *
+                                      0.015),
+                        )
+                      ],
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.secondary,
+                          fontSize:
+                              (_screenSize.width + _screenSize.height) * 0.05),
                     ),
                   );
                 },
